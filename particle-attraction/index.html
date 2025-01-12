@@ -13,34 +13,75 @@
         canvas {
             display: block;
         }
-        #particleCount {
+        #controls {
             position: fixed;
             top: 10px;
             left: 10px;
             color: white;
             font-family: Arial, sans-serif;
             z-index: 1;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 5px;
         }
-        #resetBtn {
-            position: fixed;
-            top: 10px;
-            right: 10px;
+        #particleCount {
+            margin-bottom: 10px;
+        }
+        .control-group {
+            margin-bottom: 10px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="range"] {
+            width: 150px;
+        }
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        .button {
             padding: 8px 16px;
             background: rgba(255, 255, 255, 0.2);
             border: 1px solid white;
             color: white;
             cursor: pointer;
             font-family: Arial, sans-serif;
-            z-index: 1;
+            margin-right: 10px;
+            margin-bottom: 10px;
         }
-        #resetBtn:hover {
+        .button:hover {
             background: rgba(255, 255, 255, 0.3);
+        }
+        #buttons {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1;
         }
     </style>
 </head>
 <body>
-    <div id="particleCount">Particles: 0</div>
-    <button id="resetBtn">Reset</button>
+    <div id="controls">
+        <div id="particleCount">Particles: 0</div>
+        <div class="control-group">
+            <label>
+                <input type="checkbox" id="showTrails" checked>
+                Show Trails
+            </label>
+        </div>
+        <div class="control-group">
+            <label for="gravityConstant">Gravity Constant: <span id="gravityValue">1000</span></label>
+            <input type="range" id="gravityConstant" min="0" max="7" value="3" step="0.1">
+        </div>
+        <div class="control-group">
+            <button class="button" id="solarSystemBtn">Load Solar System</button>
+        </div>
+    </div>
+    <div id="buttons">
+        <button class="button" id="screenshotBtn">Take Screenshot</button>
+        <button class="button" id="resetBtn">Reset</button>
+    </div>
     <canvas id="canvas"></canvas>
     <script src="particle.js"></script>
     <script src="app.js"></script>
